@@ -1,0 +1,72 @@
+Entities:
+        User
+        Company
+        Gender
+        Location
+        Travel
+        Accommodation
+        FlightType
+        Agency
+
+    Attributes:
+
+        User:
+            userCode (Primary Key)
+            name
+            age
+	    companycode(Foreign Key)
+
+        Company:
+            companyCode (Primary Key)
+            companyName
+
+        Gender:
+            genderCode (Primary Key)
+            genderName
+
+        Location:
+            locationCode (Primary Key)
+            locationName
+
+	hotel:
+	    hotelcode(Primary Key)
+	    hotelname
+
+        Travel:
+            travelCode (Primary Key)
+	    userCode (Foreign Key referencing User)
+            fromLocationCode (Foreign Key referencing Location)
+            toLocationCode (Foreign Key referencing Location)
+            flightTypeCode (Foreign Key referencing FlightType)
+            price
+            time
+            distance
+            agencyCode (Foreign Key referencing Agency)
+            date
+
+        Accommodation:
+            hotelCode (Primary Key)
+            locationCode (Foreign Key referencing Location)
+            name
+            days
+            price
+            total
+            date
+
+        FlightType:
+            flightTypeCode (Primary Key)
+            flightTypeName
+
+        Agency:
+            agencyCode (Primary Key)
+            agencyName
+
+    Relationships:
+        User - Travel: One-to-Many (A user can have multiple travel records)
+        User - Accommodation: One-to-Many (A user can have multiple accommodation records)
+        Location - Travel: one-to-many (Each location record has 'from' and 'to' travel)
+        Travel - FlightType: Many-to-One (Each travel record has a flight type)
+        Agency - Travel: One-to-Many (Each agency record has an travel)
+        Location - Accommodation : One-to-Many (Each location record is associated with a accommodation)
+
+	Hotel - Accomodation : One-to-Many(Each hotel record is associated with a accomodation) 
