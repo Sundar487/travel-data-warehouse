@@ -74,9 +74,6 @@ travel-data-warehouse/
 ├── travel_dataset_dashboard.pbix # Power BI file
 ├── README.md
 
-yaml
-Copy
-Edit
 
 ---
 
