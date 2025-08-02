@@ -66,13 +66,12 @@ Main entities after normalization:
 
 travel-data-warehouse/
 │
-├── data_raw/ # Original Kaggle CSVs
-├── data_3nf/ # Cleaned, normalized 3NF CSVs
-├── scripts/ # Python ETL scripts
-├── notebooks/ # Jupyter Notebooks (optional)
-├── aws_glue_script.txt # Glue + Redshift COPY commands
-├── travel_dataset_dashboard.pbix # Power BI file
-├── README.md
+- ├── data_raw/ # Original Kaggle CSVs
+- ├── data_3nf/ # Cleaned, normalized 3NF CSVs
+- ├── aws_redshift_15_06_2025 # Python ETL scripts 
+- ├── aws_glue_script.txt # Glue + Redshift COPY commands
+- ├── travel_dataset_dashboard.pbix # Power BI file
+- ├── README.md
 
 
 ---
