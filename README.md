@@ -22,6 +22,9 @@ To build a simple yet production-style data warehouse from travel-related raw da
 
 ## 🏗️ Architecture Overview
 
+![architecture](https://github.com/user-attachments/assets/ab1c2acf-4af4-4cd8-bd70-1da972a2a6f7)
+
+
 1. **Raw CSV files** from a Kaggle dataset stored locally  
 2. **Data cleaning and 3NF normalization** done using Python (Pandas)  
 3. **Cleaned data stored** as CSV files in `data_3nf/` folder  
