@@ -1,0 +1,214 @@
+import redshift_connector
+conn = redshift_connector.connect(
+    host= 'redshift-cluster-2.czyvbdep986e.ap-south-1.redshift.amazonaws.com',
+    database='dev',
+    user='awsuser2',
+    password='Redshift1'
+)
+ 
+ 
+conn.autocommit = True
+ 
+cursor = redshift_connector.Cursor = conn.cursor()
+
+
+cursor.execute("""
+CREATE TABLE "user" (
+"index" INTEGER,
+  "userCode" INTEGER,
+  "name" TEXT,
+  "age" INTEGER,
+  "companyCode" TEXT
+)
+""")
+
+
+cursor.execute("""
+CREATE TABLE "company" (
+"index" INTEGER,
+  "companyCode" INTEGER,
+  "companyName" TEXT
+)
+""")
+
+cursor.execute("""
+CREATE TABLE "gender" (
+"index" INTEGER,
+  "genderCode" TEXT,
+  "genderName" TEXT
+)
+""")
+
+cursor.execute("""
+CREATE TABLE "location" (
+"index" INTEGER,
+  "locationCode" INTEGER,
+  "locationName" TEXT
+)
+""")
+
+cursor.execute("""
+CREATE TABLE "accommodation" (
+"index" INTEGER,
+  "hotelCode" TEXT,
+  "locationCode" INTEGER,
+  "name" TEXT,
+  "days" INTEGER,
+  "price" REAL,
+  "total" REAL,
+  "date" TIMESTAMP
+)
+""")
+
+
+cursor.execute("""
+CREATE TABLE "flighttype" (
+"index" INTEGER,
+  "flightTypeCode" TEXT,
+  "flightTypeName" TEXT
+)
+""")
+
+
+cursor.execute("""
+CREATE TABLE "agency" (
+"index" INTEGER,
+  "agencyCode" TEXT,
+  "agencyName" TEXT
+)
+""")
+
+cursor.execute("""
+CREATE TABLE "travel" (
+"index" INTEGER,
+  "travelcode" INTEGER,
+  "usercode" INTEGER,
+  "fromLocationCode" INTEGER,
+  "toLocationCode" INTEGER,
+  "flightTypeCode" TEXT,
+  "price" REAL,
+  "time" REAL,
+  "distance" REAL,
+  "agencyCode" TEXT,
+  "date" TIMESTAMP
+""")
+
+
+
+cursor.execute("""
+CREATE TABLE "hotel" (
+"index" INTEGER,
+  "hotelCode" TEXT,
+  "hotelName" TEXT
+)
+""")
+
+
+
+
+
+
+
+
+
+
+
+cursor.execute("""
+COPY "user"
+FROM 's3://sundar-travel-data/output/user.csv'
+CREDENTIALS
+'aws_iam_role=arn:aws:iam::939334088671:role/myawsredshift'
+REGION 'ap-south-1'
+IGNOREHEADER 1
+CSV
+""")
+
+
+cursor.execute("""
+COPY "company"
+FROM 's3://sundar-travel-data/output/company.csv'
+CREDENTIALS 
+'aws_iam_role=arn:aws:iam::939334088671:role/myawsredshift'
+REGION 'ap-south-1'
+IGNOREHEADER 1
+CSV
+""")
+
+
+cursor.execute("""
+COPY "gender"
+FROM 's3://sundar-travel-data/output/gender.csv'
+CREDENTIALS 
+'aws_iam_role=arn:aws:iam::939334088671:role/myawsredshift'
+REGION 'ap-south-1'
+IGNOREHEADER 1
+CSV
+""")
+
+
+cursor.execute("""
+COPY "location"
+FROM 's3://sundar-travel-data/output/location.csv'
+CREDENTIALS 
+'aws_iam_role=arn:aws:iam::939334088671:role/myawsredshift'
+REGION 'ap-south-1'
+IGNOREHEADER 1
+CSV
+""")
+
+
+cursor.execute("""
+COPY "accommodation"
+FROM 's3://sundar-travel-data/output/accommodation.csv'
+CREDENTIALS 
+'aws_iam_role=arn:aws:iam::939334088671:role/myawsredshift'
+REGION 'ap-south-1'
+IGNOREHEADER 1
+CSV
+""")
+
+
+cursor.execute("""
+COPY "flighttype"
+FROM 's3://sundar-travel-data/output/flighttype.csv'
+CREDENTIALS 
+'aws_iam_role=arn:aws:iam::939334088671:role/myawsredshift'
+REGION 'ap-south-1'
+IGNOREHEADER 1
+CSV
+""")
+
+
+
+cursor.execute("""
+COPY "agency"
+FROM 's3://sundar-travel-data/output/agency.csv'
+CREDENTIALS 
+'aws_iam_role=arn:aws:iam::939334088671:role/myawsredshift'
+REGION 'ap-south-1'
+IGNOREHEADER 1
+CSV
+""")
+
+
+
+cursor.execute("""
+COPY "travel"
+FROM 's3://sundar-travel-data/output/travel.csv'
+CREDENTIALS 
+'aws_iam_role=arn:aws:iam::939334088671:role/myawsredshift'
+REGION 'ap-south-1'
+IGNOREHEADER 1
+CSV
+""")
+
+
+cursor.execute("""
+COPY "hotel"
+FROM 's3://sundar-travel-data/output/hotel.csv'
+CREDENTIALS
+'aws_iam_role=arn:aws:iam::939334088671:role/myawsredshift'
+REGION 'ap-south-1'
+IGNOREHEADER 1
+CSV
+""")
